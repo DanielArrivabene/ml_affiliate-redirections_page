@@ -38,10 +38,28 @@
     </svg>
 
     <script>
-      setTimeout(function () {
-        window.location.href =
-          'https://chat.whatsapp.com/KBo7ud8DLbzBzBr42e0ozr';
-      }, 500);
+      (function () {
+        var groupCode = 'KBo7ud8DLbzBzBr42e0ozr';
+        var webUrl = 'https://chat.whatsapp.com/' + groupCode;
+        var isAndroid = /Android/i.test(navigator.userAgent);
+
+        if (isAndroid) {
+          var intentUrl =
+            'intent://invite/' +
+            groupCode +
+            '#Intent;scheme=whatsapp;package=com.whatsapp;S.browser_fallback_url=' +
+            encodeURIComponent(webUrl) +
+            ';end';
+
+          setTimeout(function () {
+            window.location.href = intentUrl;
+          }, 1500);
+        } else {
+          setTimeout(function () {
+            window.location.href = webUrl;
+          }, 2000);
+        }
+      })();
     </script>
   </body>
 </html>
