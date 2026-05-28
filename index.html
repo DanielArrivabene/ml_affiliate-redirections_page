@@ -15,6 +15,7 @@
         background: #fff;
         min-height: 100vh;
         display: flex;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
       }
@@ -22,6 +23,33 @@
       .whatsapp-icon {
         width: 80px;
         height: 80px;
+      }
+
+      .fallback {
+        display: none;
+        margin-top: 24px;
+        text-align: center;
+      }
+
+      .fallback p {
+        font-family:
+          -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-size: 0.95rem;
+        color: #555;
+        margin-bottom: 12px;
+      }
+
+      .fallback a {
+        display: inline-block;
+        padding: 12px 24px;
+        background: #25d366;
+        color: white;
+        text-decoration: none;
+        border-radius: 8px;
+        font-family:
+          -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-weight: 600;
+        font-size: 0.95rem;
       }
     </style>
   </head>
@@ -37,27 +65,67 @@
       />
     </svg>
 
+    <div class="fallback" id="fallback">
+      <p>Toque no botão para entrar no grupo</p>
+      <a id="fallback-link" href="#">Entrar no Grupo</a>
+    </div>
+
     <script>
       (function () {
-        var groupCode = 'KBo7ud8DLbzBzBr42e0ozr';
-        var webUrl = 'https://chat.whatsapp.com/' + groupCode;
-        var isAndroid = /Android/i.test(navigator.userAgent);
+        var groupUrl = 'https://chat.whatsapp.com/KBo7ud8DLbzBzBr42e0ozr';
+        var ua = navigator.userAgent || '';
 
-        if (isAndroid) {
-          var intentUrl =
-            'intent://invite/' +
-            groupCode +
-            '#Intent;scheme=whatsapp;package=com.whatsapp;S.browser_fallback_url=' +
-            encodeURIComponent(webUrl) +
-            ';end';
+        // Detecta in-app browsers (Facebook, Instagram, Messenger, etc.)
+        var isInApp = /FBAN|FBAV|Instagram|Messenger/i.test(ua);
+        var isAndroid = /Android/i.test(ua);
+        var isIOS = /iPhone|iPad|iPod/i.test(ua);
 
+        if (isInApp && isAndroid) {
+          // Formato correto: intent:FULL_URL#Intent;end
+          // Isso força o Android a abrir no navegador externo padrão
+          var intentLink = 'intent:' + groupUrl + '#Intent;end';
+
+          // Tenta redirect automático
+          window.location.replace(intentLink);
+
+          // Fallback: mostra botão caso o redirect automático não funcione
           setTimeout(function () {
-            window.location.href = intentUrl;
+            var fallback = document.getElementById('fallback');
+            var link = document.getElementById('fallback-link');
+            link.href = intentLink;
+            fallback.style.display = 'block';
           }, 1500);
-        } else {
+        } else if (isInApp && isIOS) {
+          // iOS: Shortcuts fallback para escapar do in-app browser
+          var id = ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(
+            /[018]/g,
+            function (c) {
+              return (
+                c ^
+                (crypto.getRandomValues(new Uint8Array(1))[0] & (15 >> (c / 4)))
+              ).toString(16);
+            }
+          );
+          var shortcutLink =
+            'shortcuts://x-callback-url/run-shortcut?name=' +
+            id +
+            '&x-error=' +
+            encodeURIComponent(groupUrl);
+
+          window.location.replace(shortcutLink);
+
+          // Fallback
           setTimeout(function () {
-            window.location.href = webUrl;
+            var fallback = document.getElementById('fallback');
+            var link = document.getElementById('fallback-link');
+            link.href = groupUrl;
+            fallback.style.display = 'block';
           }, 2000);
+        } else {
+          // Navegador normal - redirect direto
+          setTimeout(function () {
+            window.location.href = groupUrl;
+          }, 1500);
         }
       })();
     </script>
