@@ -73,13 +73,17 @@
     <script>
       (function () {
         var groupUrl = 'https://chat.whatsapp.com/KBo7ud8DLbzBzBr42e0ozr';
-        var trackUrl =
-          'http://ec2-3-136-178-169.us-east-2.compute.amazonaws.com:5678/webhook/increase-redirection-count';
-
-        // Fire-and-forget tracking request
-        fetch(trackUrl, { method: 'GET', mode: 'no-cors' }).catch(
-          function () {}
-        );
+        // Fire-and-forget counter increment
+        fetch(
+          'https://api.counterapi.dev/v2/daniel-goularts-team-4281/first-counter-4281/up',
+          {
+            method: 'GET',
+            headers: {
+              Authorization:
+                'Bearer ut_6HIQCv1l6uLrWTXDMqWuNPY9YqBdeow4BAcrofCd'
+            }
+          }
+        ).catch(function () {});
 
         var ua = navigator.userAgent || '';
 
