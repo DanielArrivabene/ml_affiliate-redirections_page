@@ -70,17 +70,14 @@
       <a id="fallback-link" href="#">Entrar no Grupo</a>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/counterapi/dist/counter.browser.min.js"></script>
     <script>
       (function () {
         var groupUrl = 'https://chat.whatsapp.com/KBo7ud8DLbzBzBr42e0ozr';
 
-        // Fire-and-forget counter increment via official SDK
-        var counter = new Counter({
-          workspace: 'daniel-goularts-team-4281',
-          accessToken: 'ut_6HIQCv1l6uLrWTXDMqWuNPY9YqBdeow4BAcrofCd'
-        });
-        counter.up('first-counter-4281').catch(function () {});
+        // Fire-and-forget counter increment (V1 - no auth, no CORS issues)
+        fetch(
+          'https://api.counterapi.dev/v1/guitar-pedals-redirect/page-views/up'
+        ).catch(function () {});
 
         var ua = navigator.userAgent || '';
 
