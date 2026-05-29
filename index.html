@@ -144,35 +144,27 @@
         var buttonState = document.getElementById('button-state');
         var mainBtn = document.getElementById('main-btn');
 
-        if (isInApp) {
-          // ===== IN-APP BROWSER =====
-          // Estratégia: Mostrar botão imediatamente com target="_blank"
-          // No Instagram/Facebook in-app browser, target="_blank" geralmente
-          // abre no navegador externo do sistema (Safari/Chrome)
-          loadingState.classList.add('hidden');
-          buttonState.classList.remove('hidden');
-          mainBtn.href = groupUrl;
+        // Sempre mostra o botão — garante que o counter de cliques é registrado
+        loadingState.classList.add('hidden');
+        buttonState.classList.remove('hidden');
+        mainBtn.href = groupUrl;
 
-          // Também tenta o truque de window.open que em alguns in-app browsers
-          // força abertura externa
-          mainBtn.addEventListener('click', function (e) {
-            // Counter de cliques no botão
-            fetch(
-              'https://api.counterapi.dev/v1/guitar-pedals-redirect/button-clicks/up'
-            ).catch(function () {});
+        mainBtn.addEventListener('click', function (e) {
+          // Counter de cliques no botão
+          fetch(
+            'https://api.counterapi.dev/v1/guitar-pedals-redirect/button-clicks/up'
+          ).catch(function () {});
 
+          if (isInApp) {
             // Tenta abrir via window.open (alguns in-app browsers abrem externamente)
             var win = window.open(groupUrl, '_system');
             if (win) {
               e.preventDefault();
             }
             // Se window.open falhar, o href normal com target="_blank" será usado
-          });
-        } else {
-          // ===== NAVEGADOR NORMAL =====
-          // Redirect direto funciona perfeitamente
-          window.location.href = groupUrl;
-        }
+          }
+          // Navegador normal: deixa o href seguir normalmente
+        });
       })();
     </script>
   </body>
