@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Redirecionando...</title>
+    <title>Entrar no Grupo</title>
     <style>
       * {
         margin: 0;
@@ -18,38 +18,76 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        font-family:
+          -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        padding: 24px;
       }
 
       .whatsapp-icon {
-        width: 80px;
-        height: 80px;
+        width: 72px;
+        height: 72px;
+        margin-bottom: 20px;
       }
 
-      .fallback {
-        display: none;
-        margin-top: 24px;
+      .container {
         text-align: center;
+        max-width: 320px;
       }
 
-      .fallback p {
-        font-family:
-          -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        font-size: 0.95rem;
-        color: #555;
-        margin-bottom: 12px;
+      .container h1 {
+        font-size: 1.2rem;
+        color: #222;
+        margin-bottom: 8px;
+        font-weight: 700;
       }
 
-      .fallback a {
+      .container p {
+        font-size: 0.9rem;
+        color: #666;
+        margin-bottom: 20px;
+        line-height: 1.4;
+      }
+
+      .btn-whatsapp {
         display: inline-block;
-        padding: 12px 24px;
+        padding: 14px 32px;
         background: #25d366;
         color: white;
         text-decoration: none;
-        border-radius: 8px;
-        font-family:
-          -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        border-radius: 28px;
         font-weight: 600;
-        font-size: 0.95rem;
+        font-size: 1rem;
+        transition: background 0.2s;
+        box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+      }
+
+      .btn-whatsapp:active {
+        background: #1da851;
+      }
+
+      .spinner {
+        width: 24px;
+        height: 24px;
+        border: 3px solid #e0e0e0;
+        border-top-color: #25d366;
+        border-radius: 50%;
+        animation: spin 0.8s linear infinite;
+        margin: 0 auto 16px;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      .loading-text {
+        font-size: 0.85rem;
+        color: #999;
+      }
+
+      .hidden {
+        display: none;
       }
     </style>
   </head>
@@ -65,73 +103,75 @@
       />
     </svg>
 
-    <div class="fallback" id="fallback">
-      <p>Toque no botão para entrar no grupo</p>
-      <a id="fallback-link" href="#">Entrar no Grupo</a>
+    <!-- Estado 1: Loading (navegador normal) -->
+    <div class="container" id="loading-state">
+      <div class="spinner"></div>
+      <p class="loading-text">Redirecionando...</p>
+    </div>
+
+    <!-- Estado 2: Botão manual (in-app browsers) -->
+    <div class="container hidden" id="button-state">
+      <h1>Grupo de Ofertas 🎸</h1>
+      <p>Toque no botão abaixo para entrar no grupo do WhatsApp</p>
+      <a
+        id="main-btn"
+        class="btn-whatsapp"
+        href="#"
+        target="_blank"
+        rel="noopener noreferrer"
+        >Entrar no Grupo</a
+      >
     </div>
 
     <script>
       (function () {
         var groupUrl = 'https://chat.whatsapp.com/KBo7ud8DLbzBzBr42e0ozr';
 
-        // Fire-and-forget counter increment (V1 - no auth, no CORS issues)
+        // Counter
         fetch(
           'https://api.counterapi.dev/v1/guitar-pedals-redirect/page-views/up'
         ).catch(function () {});
 
         var ua = navigator.userAgent || '';
 
-        // Detecta in-app browsers (Facebook, Instagram, Messenger, etc.)
-        var isInApp = /FBAN|FBAV|Instagram|Messenger/i.test(ua);
-        var isAndroid = /Android/i.test(ua);
-        var isIOS = /iPhone|iPad|iPod/i.test(ua);
-
-        if (isInApp && isAndroid) {
-          // Formato correto: intent:FULL_URL#Intent;end
-          // Isso força o Android a abrir no navegador externo padrão
-          var intentLink = 'intent:' + groupUrl + '#Intent;end';
-
-          // Tenta redirect automático
-          window.location.replace(intentLink);
-
-          // Fallback: mostra botão caso o redirect automático não funcione
-          setTimeout(function () {
-            var fallback = document.getElementById('fallback');
-            var link = document.getElementById('fallback-link');
-            link.href = intentLink;
-            fallback.style.display = 'block';
-          }, 1500);
-        } else if (isInApp && isIOS) {
-          // iOS: Shortcuts fallback para escapar do in-app browser
-          var id = ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(
-            /[018]/g,
-            function (c) {
-              return (
-                c ^
-                (crypto.getRandomValues(new Uint8Array(1))[0] & (15 >> (c / 4)))
-              ).toString(16);
-            }
+        // Detecta in-app browsers (Facebook, Instagram, Messenger, TikTok, Twitter, LinkedIn, etc.)
+        var isInApp =
+          /FBAN|FBAV|Instagram|Messenger|musical_ly|TikTok|BytedanceWebview|Twitter|LinkedInApp/i.test(
+            ua
           );
-          var shortcutLink =
-            'shortcuts://x-callback-url/run-shortcut?name=' +
-            id +
-            '&x-error=' +
-            encodeURIComponent(groupUrl);
 
-          window.location.replace(shortcutLink);
+        var loadingState = document.getElementById('loading-state');
+        var buttonState = document.getElementById('button-state');
+        var mainBtn = document.getElementById('main-btn');
 
-          // Fallback
-          setTimeout(function () {
-            var fallback = document.getElementById('fallback');
-            var link = document.getElementById('fallback-link');
-            link.href = groupUrl;
-            fallback.style.display = 'block';
-          }, 2000);
+        if (isInApp) {
+          // ===== IN-APP BROWSER =====
+          // Estratégia: Mostrar botão imediatamente com target="_blank"
+          // No Instagram/Facebook in-app browser, target="_blank" geralmente
+          // abre no navegador externo do sistema (Safari/Chrome)
+          loadingState.classList.add('hidden');
+          buttonState.classList.remove('hidden');
+          mainBtn.href = groupUrl;
+
+          // Também tenta o truque de window.open que em alguns in-app browsers
+          // força abertura externa
+          mainBtn.addEventListener('click', function (e) {
+            // Counter de cliques no botão
+            fetch(
+              'https://api.counterapi.dev/v1/guitar-pedals-redirect/button-clicks/up'
+            ).catch(function () {});
+
+            // Tenta abrir via window.open (alguns in-app browsers abrem externamente)
+            var win = window.open(groupUrl, '_system');
+            if (win) {
+              e.preventDefault();
+            }
+            // Se window.open falhar, o href normal com target="_blank" será usado
+          });
         } else {
-          // Navegador normal - redirect direto
-          setTimeout(function () {
-            window.location.href = groupUrl;
-          }, 1500);
+          // ===== NAVEGADOR NORMAL =====
+          // Redirect direto funciona perfeitamente
+          window.location.href = groupUrl;
         }
       })();
     </script>
