@@ -6,12 +6,12 @@
     <title>Pedais e Acessórios com Desconto | Grupo WhatsApp</title>
     <meta
       name="description"
-      content="Entre no grupo de WhatsApp com as melhores ofertas de pedais de guitarra e acessórios. Descontos de até 25% OFF todos os dias!"
+      content="Entre no grupo de WhatsApp com as melhores ofertas de pedais de guitarra e acessórios. Descontos reais todos os dias!"
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap"
       rel="stylesheet"
     />
     <style>
@@ -21,11 +21,16 @@
         box-sizing: border-box;
       }
 
+      html,
+      body {
+        height: 100%;
+      }
+
       body {
         background: #0a0a0a;
-        min-height: 100vh;
         font-family:
           'Inter',
+          system-ui,
           -apple-system,
           BlinkMacSystemFont,
           'Segoe UI',
@@ -33,193 +38,123 @@
           sans-serif;
         color: #fff;
         overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      /* === TOP BANNER === */
+      .top-banner {
+        background: linear-gradient(
+          90deg,
+          #c8a415 0%,
+          #e6c619 50%,
+          #c8a415 100%
+        );
+        padding: 10px 16px;
+        text-align: center;
+        font-size: 0.8rem;
+        font-weight: 700;
+        color: #000;
+        letter-spacing: 0.5px;
+      }
+
+      .top-banner span {
+        text-transform: uppercase;
       }
 
       /* === HERO SECTION === */
       .hero {
         position: relative;
-        min-height: 100vh;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        padding: 40px 20px;
+        padding: 48px 20px 40px;
+        text-align: center;
         background:
           radial-gradient(
             ellipse at 50% 0%,
-            rgba(37, 211, 102, 0.08) 0%,
-            transparent 60%
+            rgba(200, 164, 21, 0.06) 0%,
+            transparent 55%
           ),
-          radial-gradient(
-            ellipse at 80% 80%,
-            rgba(255, 152, 0, 0.05) 0%,
-            transparent 50%
-          ),
-          #0a0a0a;
+          #0f0f0f;
       }
 
-      .hero::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-        pointer-events: none;
-      }
-
-      /* === BADGE === */
-      .badge {
+      /* === WHATSAPP BADGE === */
+      .whatsapp-badge {
         display: inline-flex;
         align-items: center;
         gap: 8px;
-        background: rgba(37, 211, 102, 0.1);
+        background: rgba(37, 211, 102, 0.15);
         border: 1px solid rgba(37, 211, 102, 0.3);
         border-radius: 100px;
-        padding: 8px 16px;
-        margin-bottom: 24px;
+        padding: 8px 18px;
+        margin-bottom: 28px;
         font-size: 0.8rem;
-        font-weight: 600;
+        font-weight: 700;
         color: #25d366;
-        letter-spacing: 0.5px;
-        text-transform: uppercase;
-        animation: fadeInDown 0.6s ease-out;
+        letter-spacing: 0.3px;
       }
 
-      .badge .pulse {
-        width: 8px;
-        height: 8px;
-        background: #25d366;
-        border-radius: 50%;
-        animation: pulse 2s infinite;
+      .whatsapp-badge svg {
+        width: 16px;
+        height: 16px;
       }
 
-      /* === MASCOT === */
-      .mascot-container {
-        position: relative;
-        margin-bottom: 32px;
-        animation: fadeInUp 0.8s ease-out;
-      }
-
-      .mascot-img {
-        width: 200px;
-        height: 200px;
-        object-fit: contain;
-        border-radius: 20px;
-        filter: drop-shadow(0 20px 40px rgba(255, 152, 0, 0.3));
-        animation: float 3s ease-in-out infinite;
-      }
-
-      .mascot-glow {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 220px;
-        height: 220px;
-        background: radial-gradient(
-          circle,
-          rgba(255, 152, 0, 0.15) 0%,
-          transparent 70%
-        );
-        border-radius: 50%;
-        pointer-events: none;
-      }
-
-      /* === CONTENT === */
-      .content {
-        text-align: center;
-        max-width: 480px;
-        position: relative;
-        z-index: 1;
-        animation: fadeInUp 1s ease-out 0.2s both;
-      }
-
-      .content h1 {
-        font-size: clamp(1.8rem, 5vw, 2.5rem);
+      /* === HEADLINE === */
+      .hero h1 {
+        font-size: clamp(1.8rem, 7vw, 2.8rem);
         font-weight: 900;
         line-height: 1.1;
         margin-bottom: 16px;
-        background: linear-gradient(135deg, #fff 0%, #e0e0e0 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
+        color: #fff;
+        max-width: 500px;
+        text-transform: uppercase;
       }
 
-      .content h1 .highlight {
-        background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
+      .hero h1 .highlight {
+        color: #e6c619;
       }
 
-      .content .subtitle {
-        font-size: 1.05rem;
-        color: #a0a0a0;
-        line-height: 1.6;
+      /* === SUBTITLE === */
+      .subtitle {
+        font-size: clamp(0.95rem, 3.5vw, 1.1rem);
+        color: #b0b0b0;
+        line-height: 1.5;
         margin-bottom: 32px;
+        max-width: 420px;
         font-weight: 400;
       }
 
-      .content .subtitle strong {
-        color: #fff;
-        font-weight: 600;
-      }
-
-      /* === STATS === */
-      .stats {
-        display: flex;
-        justify-content: center;
-        gap: 32px;
-        margin-bottom: 36px;
-        flex-wrap: wrap;
-      }
-
-      .stat-item {
-        text-align: center;
-      }
-
-      .stat-number {
-        font-size: 1.6rem;
-        font-weight: 800;
-        color: #25d366;
-        display: block;
-      }
-
-      .stat-label {
-        font-size: 0.75rem;
-        color: #888;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-        margin-top: 4px;
-      }
-
-      /* === CTA BUTTON === */
-      .cta-wrapper {
-        margin-bottom: 40px;
-      }
-
-      .btn-cta {
+      /* === PRIMARY CTA BUTTON === */
+      .cta-btn {
         display: inline-flex;
         align-items: center;
         gap: 12px;
-        padding: 18px 40px;
-        background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
-        color: white;
+        padding: 18px 48px;
+        background: #25d366;
+        color: #fff;
         text-decoration: none;
         border-radius: 60px;
-        font-weight: 700;
+        font-weight: 800;
         font-size: 1.1rem;
-        transition: all 0.3s ease;
-        box-shadow:
-          0 8px 32px rgba(37, 211, 102, 0.35),
-          0 2px 8px rgba(0, 0, 0, 0.2);
+        transition:
+          transform 0.1s ease,
+          box-shadow 0.2s ease;
+        box-shadow: 0 8px 24px rgba(37, 211, 102, 0.3);
         position: relative;
         overflow: hidden;
+        min-height: 48px;
+        min-width: 48px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
       }
 
-      .btn-cta::before {
+      .cta-btn:active {
+        transform: scale(0.96);
+      }
+
+      .cta-btn::after {
         content: '';
         position: absolute;
         top: 0;
@@ -229,278 +164,333 @@
         background: linear-gradient(
           90deg,
           transparent,
-          rgba(255, 255, 255, 0.2),
+          rgba(255, 255, 255, 0.15),
           transparent
         );
         animation: shimmer 3s infinite;
       }
 
-      .btn-cta:active {
-        transform: scale(0.97);
-        box-shadow: 0 4px 16px rgba(37, 211, 102, 0.3);
-      }
-
-      .btn-cta svg {
+      .cta-btn svg {
         width: 24px;
         height: 24px;
         flex-shrink: 0;
       }
 
-      .btn-subtitle {
+      /* === MICRO-COPY === */
+      .micro-copy {
         display: block;
-        font-size: 0.75rem;
-        color: rgba(255, 255, 255, 0.7);
         margin-top: 12px;
-        font-weight: 400;
+        font-size: 0.8rem;
+        color: #888;
+        letter-spacing: 0.2px;
       }
 
-      /* === BENEFITS === */
-      .benefits {
+      /* === STORES SECTION === */
+      .stores-section {
+        padding: 32px 20px;
+        text-align: center;
+        background: #0a0a0a;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      .stores-section .section-label {
+        font-size: 0.7rem;
+        font-weight: 700;
+        color: #666;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-bottom: 16px;
+      }
+
+      .stores-list {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+      }
+
+      .store-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 8px 16px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 100px;
+        font-size: 0.82rem;
+        color: #ccc;
+        font-weight: 500;
+      }
+
+      /* === BENEFITS SECTION === */
+      .benefits-section {
+        padding: 56px 20px;
+        text-align: center;
+        background: #0a0a0a;
+      }
+
+      .benefits-section .section-label {
+        font-size: 0.75rem;
+        font-weight: 700;
+        color: #e6c619;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-bottom: 8px;
+      }
+
+      .benefits-section h2 {
+        font-size: clamp(1.4rem, 5vw, 2rem);
+        font-weight: 900;
+        text-transform: uppercase;
+        margin-bottom: 36px;
+        color: #fff;
+      }
+
+      .benefits-grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 12px;
-        margin-bottom: 40px;
-        max-width: 400px;
+        gap: 16px;
+        max-width: 500px;
+        margin: 0 auto;
+      }
+
+      .benefit-card {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 16px;
+        padding: 24px 16px;
+        text-align: center;
+      }
+
+      .benefit-card .benefit-emoji {
+        font-size: 2rem;
+        margin-bottom: 12px;
+        display: block;
+      }
+
+      .benefit-card h3 {
+        font-size: 0.9rem;
+        font-weight: 700;
+        color: #fff;
+        margin-bottom: 6px;
+      }
+
+      .benefit-card p {
+        font-size: 0.78rem;
+        color: #888;
+        line-height: 1.4;
+      }
+
+      /* === URGENCY SECTION === */
+      .urgency-section {
+        padding: 56px 20px;
+        text-align: center;
+        background:
+          repeating-linear-gradient(
+            -45deg,
+            transparent,
+            transparent 20px,
+            rgba(255, 255, 255, 0.02) 20px,
+            rgba(255, 255, 255, 0.02) 40px
+          ),
+          linear-gradient(180deg, #1a1a1a 0%, #111 100%);
+        border-top: 1px solid rgba(200, 164, 21, 0.15);
+        border-bottom: 1px solid rgba(200, 164, 21, 0.15);
+      }
+
+      .urgency-section .urgency-emoji {
+        font-size: 3rem;
+        margin-bottom: 16px;
+        display: block;
+      }
+
+      .urgency-section h2 {
+        font-size: clamp(1.4rem, 5vw, 2rem);
+        font-weight: 900;
+        text-transform: uppercase;
+        margin-bottom: 16px;
+        color: #e6c619;
+      }
+
+      .urgency-section p {
+        font-size: 1rem;
+        color: #999;
+        line-height: 1.6;
+        margin-bottom: 28px;
+        max-width: 380px;
         margin-left: auto;
         margin-right: auto;
       }
 
-      .benefit-item {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        background: rgba(255, 255, 255, 0.03);
-        border: 1px solid rgba(255, 255, 255, 0.06);
-        border-radius: 12px;
-        padding: 12px 14px;
-        font-size: 0.8rem;
-        color: #ccc;
+      /* Progress bar */
+      .progress-bar-container {
+        max-width: 360px;
+        margin: 0 auto 12px;
       }
 
-      .benefit-item .emoji {
-        font-size: 1.1rem;
-        flex-shrink: 0;
-      }
-
-      /* === SOCIAL PROOF (Screenshots) === */
-      .social-proof {
+      .progress-bar {
         width: 100%;
-        max-width: 520px;
-        margin: 0 auto;
-        animation: fadeInUp 1.2s ease-out 0.4s both;
-      }
-
-      .social-proof-title {
-        font-size: 0.75rem;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        color: #666;
-        margin-bottom: 16px;
-        font-weight: 600;
-      }
-
-      .screenshots-scroll {
-        display: flex;
-        gap: 12px;
-        overflow-x: auto;
-        padding: 8px 0 20px;
-        scroll-snap-type: x mandatory;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-      }
-
-      .screenshots-scroll::-webkit-scrollbar {
-        display: none;
-      }
-
-      .screenshot-card {
-        flex-shrink: 0;
-        width: 260px;
-        border-radius: 16px;
+        height: 10px;
+        background: #444;
+        border-radius: 10px;
         overflow: hidden;
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        scroll-snap-align: center;
-        transition: transform 0.3s ease;
-        background: #1a1a1a;
       }
 
-      .screenshot-card img {
-        width: 100%;
-        height: auto;
-        display: block;
+      .progress-bar-fill {
+        height: 100%;
+        width: 73%;
+        background: linear-gradient(90deg, #25d366, #fa7501);
+        border-radius: 10px;
+        transition: width 1s ease;
       }
 
-      /* === TRUST SIGNALS === */
-      .trust-section {
-        margin-top: 40px;
-        padding-top: 32px;
-        border-top: 1px solid rgba(255, 255, 255, 0.06);
+      .progress-label {
+        font-size: 0.85rem;
+        color: #999;
+        margin-top: 8px;
+      }
+
+      .progress-label strong {
+        color: #e6c619;
+      }
+
+      /* === HOW IT WORKS SECTION === */
+      .how-section {
+        padding: 56px 20px;
         text-align: center;
-        max-width: 400px;
+        background: #0a0a0a;
       }
 
-      .trust-items {
-        display: flex;
-        justify-content: center;
-        gap: 24px;
-        flex-wrap: wrap;
-      }
-
-      .trust-item {
-        display: flex;
-        align-items: center;
-        gap: 6px;
+      .how-section .section-label {
         font-size: 0.75rem;
-        color: #888;
+        font-weight: 700;
+        color: #25d366;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-bottom: 8px;
       }
 
-      .trust-item svg {
-        width: 16px;
-        height: 16px;
-        fill: #25d366;
-        flex-shrink: 0;
+      .how-section h2 {
+        font-size: clamp(1.4rem, 5vw, 2rem);
+        font-weight: 900;
+        text-transform: uppercase;
+        margin-bottom: 36px;
+        color: #fff;
       }
 
-      /* === TESTIMONIAL === */
-      .testimonial {
-        background: rgba(255, 255, 255, 0.03);
-        border: 1px solid rgba(255, 255, 255, 0.06);
-        border-radius: 16px;
-        padding: 20px 24px;
-        margin-top: 32px;
-        max-width: 400px;
+      .steps {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        max-width: 440px;
+        margin: 0 auto;
         text-align: left;
       }
 
-      .testimonial-text {
-        font-size: 0.9rem;
-        color: #ccc;
-        line-height: 1.5;
-        font-style: italic;
-        margin-bottom: 12px;
+      .step {
+        display: flex;
+        align-items: flex-start;
+        gap: 16px;
       }
 
-      .testimonial-author {
-        font-size: 0.75rem;
-        color: #888;
-        font-weight: 600;
-      }
-
-      /* === URGENCY BAR === */
-      .urgency-bar {
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background: rgba(10, 10, 10, 0.95);
-        backdrop-filter: blur(10px);
-        border-top: 1px solid rgba(37, 211, 102, 0.2);
-        padding: 12px 20px;
+      .step-number {
+        width: 40px;
+        height: 40px;
+        min-width: 40px;
+        background: #25d366;
+        border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
+        font-weight: 800;
+        font-size: 1rem;
+        color: #fff;
+      }
+
+      .step-content h3 {
+        font-size: 1rem;
+        font-weight: 700;
+        color: #fff;
+        margin-bottom: 4px;
+      }
+
+      .step-content p {
+        font-size: 0.88rem;
+        color: #888;
+        line-height: 1.4;
+      }
+
+      /* === FINAL CTA SECTION === */
+      .final-cta-section {
+        padding: 56px 20px 48px;
+        text-align: center;
+        background: #0a0a0a;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      .final-cta-section .social-proof-text {
+        font-size: 0.95rem;
+        color: #888;
+        margin-bottom: 24px;
+        font-style: italic;
+        max-width: 360px;
+        margin-left: auto;
+        margin-right: auto;
+        line-height: 1.5;
+      }
+
+      .final-cta-btn {
+        display: inline-flex;
+        align-items: center;
         gap: 12px;
-        z-index: 100;
-        transform: translateY(100%);
-        animation: slideUp 0.5s ease-out 2s forwards;
-      }
-
-      .urgency-bar .urgency-text {
-        font-size: 0.8rem;
-        color: #ccc;
-      }
-
-      .urgency-bar .urgency-text strong {
-        color: #25d366;
-      }
-
-      .urgency-bar .btn-urgency {
-        padding: 10px 20px;
+        padding: 18px 48px;
         background: #25d366;
         color: #fff;
         text-decoration: none;
-        border-radius: 30px;
-        font-weight: 700;
-        font-size: 0.8rem;
-        white-space: nowrap;
-        transition: background 0.2s;
+        border-radius: 60px;
+        font-weight: 800;
+        font-size: 1.1rem;
+        min-height: 48px;
+        min-width: 48px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        box-shadow: 0 8px 24px rgba(37, 211, 102, 0.3);
+        transition: transform 0.1s ease;
       }
 
-      .urgency-bar .btn-urgency:active {
-        background: #1da851;
+      .final-cta-btn:active {
+        transform: scale(0.96);
       }
 
-      /* === LOADING STATE === */
-      .spinner {
+      .final-cta-btn svg {
         width: 24px;
         height: 24px;
-        border: 3px solid #333;
-        border-top-color: #25d366;
-        border-radius: 50%;
-        animation: spin 0.8s linear infinite;
-        margin: 0 auto 16px;
+        flex-shrink: 0;
       }
 
-      .loading-text {
-        font-size: 0.85rem;
-        color: #666;
+      .final-micro-copy {
+        display: block;
+        margin-top: 14px;
+        font-size: 0.82rem;
+        color: #25d366;
+        letter-spacing: 0.2px;
       }
 
-      .hidden {
-        display: none !important;
+      /* === FOOTER === */
+      .footer {
+        padding: 24px 20px;
+        text-align: center;
+        background: #0a0a0a;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      .footer p {
+        font-size: 0.75rem;
+        color: #555;
       }
 
       /* === ANIMATIONS === */
-      @keyframes spin {
-        to {
-          transform: rotate(360deg);
-        }
-      }
-
-      @keyframes float {
-        0%,
-        100% {
-          transform: translateY(0);
-        }
-        50% {
-          transform: translateY(-10px);
-        }
-      }
-
-      @keyframes pulse {
-        0%,
-        100% {
-          opacity: 1;
-          transform: scale(1);
-        }
-        50% {
-          opacity: 0.5;
-          transform: scale(1.5);
-        }
-      }
-
-      @keyframes fadeInUp {
-        from {
-          opacity: 0;
-          transform: translateY(20px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      @keyframes fadeInDown {
-        from {
-          opacity: 0;
-          transform: translateY(-10px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
       @keyframes shimmer {
         0% {
           left: -100%;
@@ -510,228 +500,408 @@
         }
       }
 
-      @keyframes slideUp {
-        from {
-          transform: translateY(100%);
-        }
-        to {
-          transform: translateY(0);
-        }
+      /* === FOMO TOAST === */
+      .fomo-toast {
+        position: fixed;
+        bottom: 24px;
+        left: 16px;
+        background: rgba(20, 20, 20, 0.95);
+        border: 1px solid rgba(37, 211, 102, 0.3);
+        border-radius: 12px;
+        padding: 12px 18px;
+        font-size: 0.85rem;
+        color: #e0e0e0;
+        z-index: 90;
+        opacity: 0;
+        transform: translateY(20px);
+        pointer-events: none;
+        transition: none;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+        max-width: calc(100vw - 32px);
+      }
+
+      .fomo-toast.fomo-enter {
+        opacity: 1;
+        transform: translateY(0);
+        transition:
+          opacity 400ms ease-out,
+          transform 400ms ease-out;
+      }
+
+      .fomo-toast.fomo-exit {
+        opacity: 0;
+        transform: translateY(0);
+        transition: opacity 400ms ease-in;
       }
 
       /* === RESPONSIVE === */
       @media (max-width: 480px) {
-        .hero {
-          padding: 32px 16px 100px;
+        .benefits-grid {
+          grid-template-columns: 1fr 1fr;
+          gap: 12px;
         }
 
-        .mascot-img {
-          width: 160px;
-          height: 160px;
+        .benefit-card {
+          padding: 18px 12px;
         }
+      }
 
-        .stats {
-          gap: 20px;
-        }
-
-        .benefits {
+      @media (max-width: 360px) {
+        .benefits-grid {
           grid-template-columns: 1fr;
-          gap: 8px;
-        }
-
-        .btn-cta {
-          padding: 16px 32px;
-          font-size: 1rem;
-        }
-
-        .screenshot-card {
-          width: 220px;
         }
       }
     </style>
   </head>
   <body>
-    <!-- Estado Loading (fallback) -->
-    <div id="loading-state" class="hero hidden">
-      <div class="spinner"></div>
-      <p class="loading-text">Redirecionando...</p>
+    <!-- Top Urgency Banner -->
+    <div class="top-banner">
+      <span
+        >🔥 VAGAS LIMITADAS • Grupo gratuito com ofertas verificadas todos os
+        dias 🔥</span
+      >
     </div>
 
-    <!-- Hero Section Principal -->
-    <section class="hero" id="hero-section">
-      <!-- Badge -->
-      <div class="badge">
-        <span class="pulse"></span>
-        Grupo Ativo — Ofertas Diárias
+    <!-- Hero Section -->
+    <section class="hero">
+      <!-- WhatsApp Badge -->
+      <div class="whatsapp-badge">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path
+            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
+          />
+        </svg>
+        GRUPO DO WHATSAPP
       </div>
 
-      <!-- Mascote -->
-      <div class="mascot-container">
-        <div class="mascot-glow"></div>
-        <img
-          class="mascot-img"
-          src="images/mascot.png"
-          alt="Mascote - Pedal de guitarra animado"
-          onerror="this.style.display = 'none'"
-        />
+      <!-- Headline -->
+      <h1>
+        Os melhores cupons
+        <span class="highlight">e achados da internet</span> estão aqui 🎸
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="subtitle">
+        Entre no grupo e tenha acesso diário às melhores promoções do Brasil 🔥
+      </p>
+
+      <!-- Primary CTA -->
+      <a
+        data-cta
+        class="cta-btn"
+        href="https://chat.whatsapp.com/KBo7ud8DLbzBzBr42e0ozr"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path
+            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
+          />
+        </svg>
+        Entrar no Grupo
+      </a>
+
+      <!-- Micro-copy -->
+      <span class="micro-copy">100% Gratuito • Sem spam • Vagas limitadas</span>
+    </section>
+
+    <!-- Stores Section -->
+    <section class="stores-section">
+      <p class="section-label">Lojas monitoradas no grupo</p>
+      <div class="stores-list">
+        <span class="store-tag">🎛️Boss</span>
+        <span class="store-tag">🎛️ MXR</span>
+        <span class="store-tag">🎸 Fender</span>
+        <span class="store-tag">🎸 Ibanez</span>
+        <span class="store-tag">🎸 Tagima</span>
+        <span class="store-tag">✨ e muito mais</span>
       </div>
+    </section>
 
-      <!-- Conteúdo Principal -->
-      <div class="content">
-        <h1>
-          Pedais e Acessórios<br />
-          com <span class="highlight">Desconto</span>
-        </h1>
+    <!-- Benefits Section -->
+    <section class="benefits-section">
+      <p class="section-label">Por que entrar?</p>
+      <h2>Tudo que você encontra no grupo</h2>
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <span class="benefit-emoji">🎟️</span>
+          <h3>Cupons Atualizados</h3>
+          <p>Novos cupons todos os dias no seu WhatsApp.</p>
+        </div>
+        <div class="benefit-card">
+          <span class="benefit-emoji">✅</span>
+          <h3>Ofertas Verificadas</h3>
+          <p>Todas as ofertas são verificadas antes de serem divulgadas.</p>
+        </div>
+        <div class="benefit-card">
+          <span class="benefit-emoji">⚡</span>
+          <h3>Promoções Relâmpago</h3>
+          <p>Você é avisado antes de todo mundo.</p>
+        </div>
+        <div class="benefit-card">
+          <span class="benefit-emoji">🏆</span>
+          <h3>Grandes Marcas</h3>
+          <p>Anúncios de marcas confiáveis para você economizar tranquilo.</p>
+        </div>
+      </div>
+    </section>
 
-        <p class="subtitle">
-          Receba <strong>ofertas exclusivas</strong> de pedais, pedalboards e
-          acessórios direto no seu WhatsApp.<br />
-          Descontos de até <strong>50% OFF</strong> todos os dias. 🔥
+    <!-- Urgency Section -->
+    <section class="urgency-section">
+      <span class="urgency-emoji">⏰</span>
+      <h2>As melhores ofertas acabam em minutos</h2>
+      <p>
+        Quem entra primeiro aproveita melhor. Enquanto você espera, outros já
+        estão economizando.
+      </p>
+      <div class="progress-bar-container">
+        <div class="progress-bar">
+          <div class="progress-bar-fill"></div>
+        </div>
+        <p class="progress-label">
+          Vagas preenchidas hoje: <strong>73%</strong>
         </p>
+      </div>
+    </section>
 
-        <!-- CTA Principal -->
-        <div class="cta-wrapper">
-          <a
-            id="main-btn"
-            class="btn-cta"
-            href="#"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <svg viewBox="0 0 24 24" fill="currentColor">
-              <path
-                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
-              />
-            </svg>
-            Entrar no Grupo Grátis
-          </a>
-          <span class="btn-subtitle"
-            >Sem spam • Só ofertas reais • Saia quando quiser</span
-          >
-        </div>
-
-        <!-- Benefícios -->
-        <div class="benefits">
-          <div class="benefit-item">
-            <span class="emoji">🎸</span>
-            <span>Pedais de todas as marcas</span>
-          </div>
-          <div class="benefit-item">
-            <span class="emoji">🔔</span>
-            <span>Alertas em tempo real</span>
-          </div>
-          <div class="benefit-item">
-            <span class="emoji">💰</span>
-            <span>Preços abaixo do normal</span>
-          </div>
-          <div class="benefit-item">
-            <span class="emoji">✅</span>
-            <span>Produtos com garantia</span>
+    <!-- How it Works Section -->
+    <section class="how-section">
+      <p class="section-label">É simples assim</p>
+      <h2>Como Funciona</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <h3>Clique no botão e entre no grupo</h3>
+            <p>Grupo gratuito com vagas limitadas.</p>
           </div>
         </div>
-
-        <!-- Trust Signals -->
-        <div class="trust-section">
-          <div class="trust-items">
-            <div class="trust-item">
-              <svg viewBox="0 0 24 24">
-                <path
-                  d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"
-                />
-              </svg>
-              <span>100% Gratuito</span>
-            </div>
-            <div class="trust-item">
-              <svg viewBox="0 0 24 24">
-                <path
-                  d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"
-                />
-              </svg>
-              <span>Sem mensagens desnecessárias</span>
-            </div>
-            <div class="trust-item">
-              <svg viewBox="0 0 24 24">
-                <path
-                  d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"
-                />
-              </svg>
-              <span>Saia quando quiser</span>
-            </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <h3>Ative as notificações</h3>
+            <p>Seja o primeiro a saber quando uma oferta relâmpago sair.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <h3>Aproveite e economize</h3>
+            <p>Use o cupom, compre com desconto e mostre seu achado!</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Barra de Urgência (aparece após 2s) -->
-    <div class="urgency-bar" id="urgency-bar">
-      <span class="urgency-text"
-        >🔥 <strong>Vagas limitadas</strong> no grupo</span
-      >
+    <!-- Final CTA Section -->
+    <section class="final-cta-section">
+      <p class="social-proof-text">
+        Junte-se a mais de <span id="social-badge-count">30.000</span> pessoas
+        que já aproveitam as melhores ofertas todo dia.
+      </p>
       <a
-        id="urgency-btn"
-        class="btn-urgency"
-        href="#"
+        data-cta
+        class="final-cta-btn"
+        href="https://chat.whatsapp.com/KBo7ud8DLbzBzBr42e0ozr"
         target="_blank"
         rel="noopener noreferrer"
-        >Entrar Agora</a
       >
-    </div>
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path
+            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
+          />
+        </svg>
+        Entrar Agora no Grupo
+      </a>
+      <span class="final-micro-copy"
+        >✓ Gratuito • ✓ Acesso imediato • ✓ Sem spam</span
+      >
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>&copy; 2025 Pedais Baratos - Todos os direitos reservados</p>
+    </footer>
+
+    <!-- FOMO Toast Notification -->
+    <div class="fomo-toast" id="fomo-toast" aria-live="polite"></div>
 
     <script>
-      (function () {
-        var groupUrl = 'https://chat.whatsapp.com/KBo7ud8DLbzBzBr42e0ozr';
+      // === In-App Browser Detection and CTA Click Handling ===
+      try {
+        (function () {
+          var groupUrl = 'https://chat.whatsapp.com/KBo7ud8DLbzBzBr42e0ozr';
 
-        // Counter de page views
-        fetch(
-          'https://api.counterapi.dev/v1/guitar-pedals-redirect/page-views/up'
-        ).catch(function () {});
+          var ua = navigator.userAgent || '';
+          var isInApp =
+            /FBAN|FBAV|Instagram|Messenger|musical_ly|TikTok|BytedanceWebview|Twitter|LinkedInApp/i.test(
+              ua
+            );
 
-        var ua = navigator.userAgent || '';
+          var ctas = document.querySelectorAll('[data-cta]');
+          ctas.forEach(function (el) {
+            el.href = groupUrl;
+          });
 
-        // Detecta in-app browsers
-        var isInApp =
-          /FBAN|FBAV|Instagram|Messenger|musical_ly|TikTok|BytedanceWebview|Twitter|LinkedInApp/i.test(
-            ua
-          );
-
-        var mainBtn = document.getElementById('main-btn');
-        var urgencyBtn = document.getElementById('urgency-btn');
-
-        // Seta os links
-        mainBtn.href = groupUrl;
-        urgencyBtn.href = groupUrl;
-
-        // Handler de clique para ambos os botões
-        function handleClick(e) {
-          // Counter de cliques
-          fetch(
-            'https://api.counterapi.dev/v1/guitar-pedals-redirect/button-clicks/up'
-          ).catch(function () {});
-
-          if (isInApp) {
-            var win = window.open(groupUrl, '_system');
-            if (win) {
-              e.preventDefault();
+          function handleCtaClick(e) {
+            if (isInApp) {
+              var win = window.open(groupUrl, '_system');
+              if (win) {
+                e.preventDefault();
+              }
             }
           }
-        }
 
-        mainBtn.addEventListener('click', handleClick);
-        urgencyBtn.addEventListener('click', handleClick);
+          ctas.forEach(function (el) {
+            el.addEventListener('click', handleCtaClick);
+          });
+        })();
+      } catch (e) {}
 
-        // Esconde urgency bar quando o usuário scrollar para o topo
-        var urgencyBar = document.getElementById('urgency-bar');
-        var lastScroll = 0;
-        window.addEventListener('scroll', function () {
-          var currentScroll = window.pageYOffset;
-          if (currentScroll < 100) {
-            urgencyBar.style.transform = 'translateY(100%)';
-          } else {
-            urgencyBar.style.transform = 'translateY(0)';
+      // === FOMO Toast Notification System ===
+      try {
+        (function () {
+          var fomoNames = ['Novo membro', 'Novo membro'];
+          var timeAgoOptions = ['agora', 'há 1 min', 'há 2 min', 'há 3 min'];
+          var currentIndex = 0;
+          var toastEl = document.getElementById('fomo-toast');
+
+          function getRandomTimeAgo() {
+            return timeAgoOptions[
+              Math.floor(Math.random() * timeAgoOptions.length)
+            ];
           }
-          lastScroll = currentScroll;
-        });
-      })();
+
+          function showToast() {
+            try {
+              var name = fomoNames[currentIndex];
+              var timeAgo = getRandomTimeAgo();
+              toastEl.textContent =
+                '\uD83D\uDFE2 ' + name + ' entrou ' + timeAgo;
+
+              toastEl.classList.remove('fomo-exit');
+              void toastEl.offsetWidth;
+              toastEl.classList.add('fomo-enter');
+
+              setTimeout(function () {
+                hideToast();
+              }, 5000);
+            } catch (e) {
+              if (toastEl) {
+                toastEl.style.display = 'none';
+              }
+            }
+          }
+
+          function hideToast() {
+            try {
+              toastEl.classList.remove('fomo-enter');
+              toastEl.classList.add('fomo-exit');
+
+              setTimeout(function () {
+                toastEl.classList.remove('fomo-exit');
+                toastEl.style.opacity = '0';
+                toastEl.style.transform = 'translateY(20px)';
+
+                currentIndex = (currentIndex + 1) % fomoNames.length;
+
+                setTimeout(function () {
+                  toastEl.style.opacity = '';
+                  toastEl.style.transform = '';
+                  showToast();
+                }, 600);
+              }, 400);
+            } catch (e) {
+              if (toastEl) {
+                toastEl.style.display = 'none';
+              }
+            }
+          }
+
+          setTimeout(function () {
+            showToast();
+          }, 3000);
+        })();
+      } catch (e) {
+        var fomoEl = document.getElementById('fomo-toast');
+        if (fomoEl) {
+          fomoEl.style.display = 'none';
+        }
+      }
+
+      // === Analytics Tracking — Counter API (fire-and-forget) ===
+      try {
+        (function () {
+          var API_BASE = 'https://api.counterapi.dev/v1/guitar-pedals-redirect';
+
+          function trackEvent(endpoint, timeoutMs) {
+            try {
+              var controller = new AbortController();
+              var timeoutId = setTimeout(function () {
+                controller.abort();
+              }, timeoutMs || 5000);
+
+              fetch(API_BASE + endpoint, { signal: controller.signal })
+                .then(function () {
+                  clearTimeout(timeoutId);
+                })
+                .catch(function () {
+                  clearTimeout(timeoutId);
+                });
+            } catch (e) {}
+          }
+
+          window.__trackEvent = trackEvent;
+
+          // Track page view on load
+          trackEvent('/page-views/up', 5000);
+
+          // Track button clicks on all CTA elements
+          var ctas = document.querySelectorAll('[data-cta]');
+          for (var i = 0; i < ctas.length; i++) {
+            ctas[i].addEventListener('click', function () {
+              trackEvent('/button-clicks/up', 5000);
+            });
+          }
+        })();
+      } catch (e) {}
+
+      // === Social Proof Badge — Live Counter Fetch ===
+      try {
+        (function () {
+          var controller = new AbortController();
+          var timeoutId = setTimeout(function () {
+            controller.abort();
+          }, 3000);
+
+          fetch(
+            'https://api.counterapi.dev/v1/guitar-pedals-redirect/page-views',
+            { signal: controller.signal }
+          )
+            .then(function (response) {
+              clearTimeout(timeoutId);
+              if (!response.ok) {
+                throw new Error('API response not ok');
+              }
+              return response.json();
+            })
+            .then(function (data) {
+              var count = data && data.count ? data.count : 0;
+              if (count < 50) {
+                count = count + 100;
+              }
+              // Format as "XXX.XXX" Brazilian number format for social proof
+              var formatted = count.toLocaleString('pt-BR');
+              var badgeEl = document.getElementById('social-badge-count');
+              if (badgeEl) {
+                badgeEl.textContent = formatted;
+              }
+            })
+            .catch(function () {
+              clearTimeout(timeoutId);
+            });
+        })();
+      } catch (e) {}
     </script>
   </body>
 </html>
